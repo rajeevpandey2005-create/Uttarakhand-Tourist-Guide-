@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uttarakhand Tourist Guide</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Navbar */
+    header {
+        background: #2c3e50;
+        color: white;
+        padding: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    nav a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    /* Hero Section */
+    .hero {
+        text-align: center;
+        padding: 50px;
+        background: #3498db;
+        color: white;
+    }
+
+    .hero input {
+        padding: 10px;
+        width: 250px;
+        margin-top: 10px;
+        border: none;
+        border-radius: 5px;
+    }
+
+    /* Places */
+    .places {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .card {
+        border: 1px solid #ddd;
+        padding: 15px;
+        margin: 10px;
+        display: inline-block;
+        width: 200px;
+        border-radius: 10px;
+        background: #f9f9f9;
+        transition: 0.3s;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        background: #eaf2f8;
+    }
+
+    /* Contact */
+    .contact {
+        background: #ecf0f1;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .contact input, .contact textarea {
+        display: block;
+        margin: 10px auto;
+        padding: 10px;
+        width: 250px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    button {
+        padding: 10px 20px;
+        background: #2c3e50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    button:hover {
+        background: #34495e;
+    }
+</style>
+
+</head>
+<body>
+
+<!-- Navbar -->
+<header>
+    <h1>Uttarakhand Guide</h1>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#places">Places</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+    <h2>Explore Devbhoomi Uttarakhand</h2>
+    <p>Discover beautiful places like Rishikesh, Nainital & Mussoorie</p>
+    <input type="text" id="search" placeholder="Search places...">
+</section>
+
+<!-- Places Section -->
+<section id="places" class="places">
+    <h2>Popular Destinations</h2>
+
+    <div class="card" data-name="rishikesh">
+        <h3>Rishikesh</h3>
+        <p>Yoga Capital & Adventure Hub</p>
+    </div>
+
+    <div class="card" data-name="nainital">
+        <h3>Nainital</h3>
+        <p>Lake city surrounded by hills</p>
+    </div>
+
+    <div class="card" data-name="mussoorie">
+        <h3>Mussoorie</h3>
+        <p>Queen of Hills</p>
+    </div>
+
+    <div class="card" data-name="kedarnath">
+        <h3>Kedarnath</h3>
+        <p>Famous spiritual destination</p>
+    </div>
+
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <form onsubmit="submitForm(event)">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
+    </form>
+</section>
+
+<script>
+    // Search Filter
+    const searchInput = document.getElementById("search");
+    const cards = document.querySelectorAll(".card");
+
+    searchInput.addEventListener("keyup", function () {
+        let value = searchInput.value.toLowerCase();
+
+        cards.forEach(card => {
+            let name = card.getAttribute("data-name");
+
+            if (name.includes(value)) {
+                card.style.display = "inline-block";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    });
+
+    // Contact Form Alert
+    function submitForm(event) {
+        event.preventDefault();
+        alert("Thank you! Your message has been sent.");
+    }
+</script>
+
+</body>
+</html>
